@@ -1,5 +1,5 @@
-﻿using ProjectCSV.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ProjectCSV.Entities;
 
 namespace ProjectCSV.Services
 {

@@ -26,3 +26,4 @@ C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.csproj.Core
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.csproj.CopyComplete
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.exe
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.pdb
+C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.Views.AddState.resources

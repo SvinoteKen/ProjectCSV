@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectCSV.Data
+namespace ProjectCSV.Entities
 {
-    class States
+    public class States : IEntities
     {
         [Index(0)]
         public int Id { get; set; }

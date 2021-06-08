@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using ProjectCSV.Entities;
 namespace ProjectCSV.Data
 {
     interface IRepository

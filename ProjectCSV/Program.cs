@@ -6,6 +6,11 @@ using System.Windows.Forms;
 
 namespace ProjectCSV
 {
+    static class Status
+    {
+        public static int ID { get; set; }
+        public static bool Update { get; set; }
+    }
     static class Program
     {
         /// <summary>

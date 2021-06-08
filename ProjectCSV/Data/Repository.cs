@@ -1,11 +1,9 @@
 ﻿using CsvHelper;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ProjectCSV.Entities;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectCSV.Data

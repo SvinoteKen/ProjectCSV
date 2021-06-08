@@ -48,9 +48,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -92,6 +89,7 @@
             this.findRadioButton.TabStop = true;
             this.findRadioButton.Text = "Найти";
             this.findRadioButton.UseVisualStyleBackColor = true;
+            this.findRadioButton.CheckedChanged += new System.EventHandler(this.findRadioButton_Click);
             // 
             // updateButton
             // 
@@ -192,6 +190,7 @@
             this.cancelRadioButton.TabStop = true;
             this.cancelRadioButton.Text = "Отмена";
             this.cancelRadioButton.UseVisualStyleBackColor = true;
+            this.cancelRadioButton.CheckedChanged += new System.EventHandler(this.cancelRadioButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -252,6 +251,7 @@
             // columnHeader10
             // 
             this.columnHeader10.Text = "ID";
+            this.columnHeader10.Width = 100;
             // 
             // columnHeader1
             // 
@@ -261,59 +261,39 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Штат";
-            this.columnHeader2.Width = 140;
+            this.columnHeader2.Width = 250;
             // 
             // columnHeader13
             // 
             this.columnHeader13.Text = "Площадь тыс. км^2";
-            this.columnHeader13.Width = 200;
+            this.columnHeader13.Width = 250;
             // 
             // columnHeader14
             // 
             this.columnHeader14.Text = "Население тыс. чел.";
-            this.columnHeader14.Width = 200;
+            this.columnHeader14.Width = 250;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletMenuItem,
-            this.updateMenuItem,
-            this.toolStripSeparator1,
-            this.toolStripMenuItem1});
+            this.updateMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
             // 
             // deletMenuItem
             // 
             this.deletMenuItem.Name = "deletMenuItem";
-            this.deletMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.deletMenuItem.Size = new System.Drawing.Size(128, 22);
             this.deletMenuItem.Text = "Удалить";
+            this.deletMenuItem.Click += new System.EventHandler(this.deletMenuItem_Click);
             // 
             // updateMenuItem
             // 
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.updateMenuItem.Size = new System.Drawing.Size(128, 22);
             this.updateMenuItem.Text = "Обновить";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
-            this.toolStripMenuItem1.Text = "Создать таблицу";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "Заявка на оздоровление детей льготных категорий"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
             // MainForm
             // 
@@ -350,9 +330,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deletMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
     }
 }
 

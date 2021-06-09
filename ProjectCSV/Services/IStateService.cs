@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using ProjectCSV.Entities;
 
 namespace ProjectCSV.Services
@@ -7,8 +8,10 @@ namespace ProjectCSV.Services
     {
         void AddState(States state);
         int GetMaxId();
+        IEnumerable<States> GetOldState();
         IEnumerable<States> GetState();
         void RemoveState(int stateId);
         void UpdateState(States state, int stateId);
+        IEnumerable<States> CopyOldState();
     }
 }

@@ -10,5 +10,7 @@ namespace ProjectCSV.Data
         IEnumerable<States> GetStates();
         void RemoveState(int id);
         void UpdateState(States state, int stateId);
+        List<States> GetOldStates();
+        IEnumerable<States> CopyOldStates();
     }
 }

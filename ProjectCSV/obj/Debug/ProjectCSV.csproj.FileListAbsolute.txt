@@ -27,3 +27,6 @@ C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.csproj.Copy
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.exe
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.pdb
 C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.Views.AddState.resources
+C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\MSI\source\repos\ProjectCSV\ProjectCSV\obj\Debug\ProjectCSV.Views.Diagram.resources

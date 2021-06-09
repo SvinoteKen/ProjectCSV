@@ -16,6 +16,14 @@ namespace ProjectCSV.Services
         {
             return _repository.GetStates();
         }
+        public IEnumerable<States> GetOldState()
+        {
+            return _repository.GetOldStates();
+        }
+        public IEnumerable<States> CopyOldState()
+        {
+            return _repository.CopyOldStates();
+        }
         public void AddState(States state)
         {
             _repository.AddState(state);

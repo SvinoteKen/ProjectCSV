@@ -4,6 +4,8 @@ using ProjectCSV.Services;
 using ProjectCSV.Views;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ProjectCSV
@@ -12,9 +14,13 @@ namespace ProjectCSV
     {
         IStateService _stateService = new StateService();
         private ListViewColumnSorter lvwColumnSorter;
+        private ToDoc doc = new ToDoc();
+        private PrintDocument docToPrint = new PrintDocument();
+        private string stringToPrint;
         public MainForm()
         {
             InitializeComponent();
+            var old = _stateService.CopyOldState();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -95,7 +101,7 @@ namespace ProjectCSV
                         var idx = int.Parse(statesListView.SelectedItems[i].SubItems[0].Text);
                         _stateService.RemoveState(idx);
                     }
-                }   
+                }
                 FillStateList();
             }
             else { MessageBox.Show("Выберте запись которую хотите удалить."); }
@@ -115,8 +121,8 @@ namespace ProjectCSV
                     };
                     if (update.ShowDialog() != DialogResult.OK)
                     {
-                         Status.Update = false;
-                         return;
+                        Status.Update = false;
+                        return;
                     }
                     var newState = update.States;
                     newState.Id = idx;
@@ -124,7 +130,7 @@ namespace ProjectCSV
                     FillStateList();
                     Status.Update = false;
                 }
-               
+
             }
             else { MessageBox.Show("Выберте запись которую хотите отредактировать."); }
         }
@@ -177,6 +183,95 @@ namespace ProjectCSV
         {
             findTextBox.Text = null;
             FillStateList();
+        }
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "Word Documents (*.docx)|*.docx",
+                FileName = "export.docx"
+            };
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (toolStripComboBox1.SelectedIndex == 0)
+                {
+                    int index = statesListView.Items.Count + 1;
+                    string[,] items = new string[index, 5];
+                    items[0, 0] = "Код"; items[0, 1] = "Регион"; items[0, 2] = "Штат"; items[0, 3] = "Площадь тыс. км^2";
+                    items[0, 4] = "Население тыс. чел.";
+                    int rows = 1;
+                    for (int i = 0; i < index - 1; i++)
+                    {
+                        items[rows, 0] = statesListView.Items[i].SubItems[0].Text;
+                        items[rows, 1] = statesListView.Items[i].SubItems[1].Text;
+                        items[rows, 2] = statesListView.Items[i].SubItems[2].Text;
+                        items[rows, 3] = statesListView.Items[i].SubItems[3].Text;
+                        items[rows, 4] = statesListView.Items[i].SubItems[4].Text;
+                        rows++;
+                    }
+                    if (!doc.IsFileInUse(sfd.FileName))
+                    {
+                        doc.CreateWordprocessingDocument(sfd.FileName, 0, items);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Закройте файл в который вы хотите добавить таблицу!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    var oldState = _stateService.GetOldState();
+                    int index = 1;
+                    foreach (var state in oldState)
+                    {
+                        index++;
+                    }
+                    string[,] items = new string[index, 5];
+                    items[0, 0] = "Код"; items[0, 1] = "Регион"; items[0, 2] = "Штат"; items[0, 3] = "Площадь тыс. км^2";
+                    items[0, 4] = "Население тыс. чел.";
+                    int rows = 1;
+                    foreach (var state in oldState)
+                    {
+                        items[rows, 0] = state.Id.ToString();
+                        items[rows, 1] = state.Region;
+                        items[rows, 2] = state.State;
+                        items[rows, 3] = state.Area.ToString();
+                        items[rows, 4] = state.Population.ToString();
+                        rows++;
+                    }
+                    if (!doc.IsFileInUse(sfd.FileName))
+                    {
+                        doc.CreateWordprocessingDocument(sfd.FileName, 1, items);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Закройте файл в который вы хотите добавить таблицу!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                printDialog1.AllowSomePages = true;
+                printDialog1.ShowHelp = true;
+                printDialog1.Document = docToPrint;
+                printDocument1.DocumentName = Path.GetFileName(sfd.FileName);
+                using (FileStream stream = new FileStream(Path.GetFullPath(sfd.FileName), FileMode.Open))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    stringToPrint = reader.ReadToEnd();
+                }
+                DialogResult result = printDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    docToPrint.Print();
+                }
+            }
+
+        }
+
+        private void diagramMenuItem_Click(object sender, EventArgs e)
+        {
+            Diagram diagramForm = new Diagram();
+            diagramForm.ShowDialog();
         }
     }
 }

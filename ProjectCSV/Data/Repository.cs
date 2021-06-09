@@ -12,6 +12,7 @@ namespace ProjectCSV.Data
     {
         private List<States> _states = new List<States>();
 
+        public List<States> oldState = new List<States>();
         public IEnumerable<States> GetListStates()
         {
             return _states.ToArray();
@@ -21,12 +22,28 @@ namespace ProjectCSV.Data
             int t = GetStates().Max(state => state.Id);
             return t;
         }
+        public List<States> GetOldStates()
+        {
+            return oldState;
+        }
+        public IEnumerable<States> CopyOldStates()
+        {
+            if (!File.Exists("state.csv"))
+            {
+                return null;
+            }
+            using (var reader = new StreamReader("state.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+            {
+                oldState = csv.GetRecords<States>().ToList();
+                return _states;
+            }
+        }
         public IEnumerable<States> GetStates()
         {
 
             if (!File.Exists("state.csv"))
             {
-                MessageBox.Show("dfgf");
                 return null;
             }
             using (var reader = new StreamReader("state.csv"))

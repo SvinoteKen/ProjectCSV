@@ -48,6 +48,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.diagramMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -277,23 +283,59 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletMenuItem,
-            this.updateMenuItem});
+            this.updateMenuItem,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem1,
+            this.diagramMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 120);
             // 
             // deletMenuItem
             // 
             this.deletMenuItem.Name = "deletMenuItem";
-            this.deletMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.deletMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deletMenuItem.Text = "Удалить";
             this.deletMenuItem.Click += new System.EventHandler(this.deletMenuItem_Click);
             // 
             // updateMenuItem
             // 
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.updateMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateMenuItem.Text = "Обновить";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Печать";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "Новый файл",
+            "Старый файл"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            // 
+            // diagramMenuItem
+            // 
+            this.diagramMenuItem.Name = "diagramMenuItem";
+            this.diagramMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diagramMenuItem.Text = "Диаграмма";
+            this.diagramMenuItem.Click += new System.EventHandler(this.diagramMenuItem_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
             // 
             // MainForm
             // 
@@ -330,6 +372,12 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deletMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem diagramMenuItem;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 

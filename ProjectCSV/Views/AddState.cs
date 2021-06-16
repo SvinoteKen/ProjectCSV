@@ -30,6 +30,20 @@ namespace ProjectCSV.Views
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            bool succeess = double.TryParse(areaText.Text, out _);
+            if (!succeess)
+            {
+                MessageBox.Show("Поле \"Площадь\" должно иметь вещественное значение",
+                    "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            bool succeess = double.TryParse(populationText.Text, out _);
+            if (!succeess)
+            {
+                MessageBox.Show("Поле \"Население\" должно иметь вещественное значение",
+                    "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var id = _stateService.GetMaxId();
             States = new States
             {
